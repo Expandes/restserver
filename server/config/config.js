@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === 'dev') {
 
 } else {
 
-    urlDB = MONGO_URL;
+    urlDB = process.env.MONGO_URL;
 
 }
 
