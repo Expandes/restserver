@@ -2,10 +2,16 @@
 // REQUIREMENTS
 // =========================
 
+//Configuraciones Globales
 require('./config/config');
 
+//Express
 const express = require('express');
+//Mongoose
+const mongoose = require('mongoose');
+
 const app = express();
+
 
 
 // =========================
@@ -21,56 +27,30 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 
+// =========================
+// RUTAS SERVICIOS REST EXPRESS (require)
+// =========================
+
+app.use(require('./routes/usuario'));
 
 
 // =========================
-// SERVICIOS REST
+// CONEXIÓN A BASE DE DATOS EN EL PUERTO 27017
 // =========================
 
-app.get('/usuario', function(req, res) {
-    res.json('get Usuario')
-})
+mongoose.connect(process.env.URLBASEDEDATOS, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true },
 
-app.post('/usuario', function(req, res) {
+    (err, res) => {
 
-    let body = req.body;
+        if (err) throw err;
 
-    if (body.nombre === undefined) {
+        console.log('Base de datos online');
 
-        res.status(400).json({
-            ok: false,
-            mensaje: 'El nombre es necesario'
-        })
-
-    } else {
-
-        res.json({
-            persona: body
-        });
-
-    }
-
-
-})
-
-app.put('/usuario/:id', function(req, res) {
-
-    let id = req.params.id;
-
-    res.json({
-        id
-    })
-})
-
-app.delete('/usuario', function(req, res) {
-    res.json('delete Usuario')
-})
-
-
+    });
 
 
 // =========================
-// LISTENER DEL PUERTO
+// LISTENER DEL PUERTO DE SERVIDOR WEB
 // =========================
 
 
