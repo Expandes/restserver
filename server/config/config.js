@@ -27,11 +27,10 @@ if (process.env.NODE_ENV === 'dev') {
 
 } else {
 
-    urlDB = 'mongodb+srv://usuario:a7tf2tQ6jybVi1K1@cluster0.w8fks.gcp.mongodb.net/cafe?retryWrites=true&w=majority';
+    urlDB = MONGO_URL;
 
 }
 
 
-//urlDB = 'mongodb+srv://usuario:a7tf2tQ6jybVi1K1@cluster0.w8fks.gcp.mongodb.net/cafe?retryWrites=true&w=majority';
 
 process.env.URLBASEDEDATOS = urlDB;
