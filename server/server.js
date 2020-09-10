@@ -29,9 +29,11 @@ app.use(bodyParser.json())
 
 // =========================
 // RUTAS SERVICIOS REST EXPRESS (require)
+// Configuración Global de Rutas
 // =========================
 
-app.use(require('./routes/usuario'));
+app.use(require('./routes/index.js'));
+
 
 
 // =========================
