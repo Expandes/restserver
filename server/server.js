@@ -9,6 +9,8 @@ require('./config/config');
 const express = require('express');
 //Mongoose
 const mongoose = require('mongoose');
+//Path
+const path = require('path');
 
 const app = express();
 
@@ -25,6 +27,13 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
+
+
+// =========================
+// Habilitar el PUBLIC/
+// =========================
+
+app.use(express.static(path.resolve(__dirname, '../public')));
 
 
 // =========================

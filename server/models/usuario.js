@@ -54,7 +54,7 @@ let usuarioSchema = new Schema({
         type: String,
         default: 'USER_ROLE',
         enum: rolesValidos
-
+            //enum lista los roles válidos
     },
     estado: {
 
@@ -85,8 +85,9 @@ usuarioSchema.methods.toJSON = function() {
 
 }
 
-
-//Set del Plugin Unique Validator, previamente unique:true. Path indica el valor ingresado
+//Unique validator te brinda un filtro y estructura de errores de cada uno de los elementos del schema
+//Set del Plugin Unique Validator, previamente es necesario agregar: unique:true. 
+//mensaje: Path (email) debe ser único
 usuarioSchema.plugin(uniqueValidator, { message: '{PATH} debe de ser único' });
 
 //Exportación
