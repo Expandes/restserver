@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 
 let verificaToken = (req, res, next) => {
 
+    //De los headers
     let token = req.get('token');
 
 
@@ -25,6 +26,8 @@ let verificaToken = (req, res, next) => {
         }
 
         req.usuario = decoded.usuario;
+
+
         next();
 
 
@@ -69,6 +72,10 @@ let verificaAdmin_Role = (req, res, next) => {
 
 
 }
+
+
+
+
 
 
 
